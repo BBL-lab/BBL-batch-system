@@ -20,4 +20,4 @@ The batch system operates on datasets organized in the BIDS format (https://bids
 - model_spec.m: This script specifies your design matrix at the single-subject level. It also needs to be customized depending on your data.
 - create_contrasts: This script specifies the contrasts that need to be applied to your design matrix for each subject. It also needs to be customized depending on your data.
 
-All of the analyses can be run with the batch.m script. The script is well commented. 
+All of the analyses can be run with the batch.m script (see comments in batch.m).
