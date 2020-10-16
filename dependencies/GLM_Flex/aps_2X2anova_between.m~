@@ -1,0 +1,24 @@
+function aps_2X2anova_between(nn)
+%%% Perform a 2X2 between subjects ANOVA using GLM_Flex
+
+%%%
+%%% Written by Jerome Prado 
+
+
+IN.N_subs  = [];
+IN.Scans = [];
+for ii = 1:length(nn)
+    IN.N_subs = [IN.N_subs numel(nn{ii})];
+    IN.Scans = [IN.Scans, nn{ii}];
+end
+
+
+IN.Between = [numel(nn)];
+IN.EqualVar = [1];
+IN.Independent = [1];
+
+F = CreateDesign(IN);
+RunSPM8ana(F,IN.Scans);
+
+
+
