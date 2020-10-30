@@ -172,7 +172,6 @@ CCN.file_pattern = struct( ...
         'quality', 0.9, ... % between 0 and 1, this is the default
         'fwhm', 5, ...       % in mm, this is the default
         'rtm', 0);           % use 1 for fMRI registration to mean
-    CCN.first_func = '[root_dir]/[subject]/func/[subject]_task-Num_run-01_bold.nii'; % image to use as reference for realignement
 
     
    % reslice options.
@@ -190,6 +189,8 @@ CCN.file_pattern = struct( ...
         'tol', [0.02 0.02 0.02 0.001 0.001 0.001], ... % tolerences for accuracy of each param
         'fwhm', [7 7] ...              % smoothing to apply to 256x256 joint histogram
         );
+    CCN.first_func = '[root_dir]/[subject]/func/[subject]_task-Num_run-01_bold.nii'; % image to use as reference for coregistration
+
     
     % normalization options (if 3 or 4 chosen, only CCN.normalise_wr_flags is read)
     CCN.norm=4;  % Determine normalisation parameters from: 1= first functional; 2= anatomital; 3= unified segmentation (SPM8 style); 4= unified segmentation (SPM12 style)
