@@ -41,21 +41,29 @@ function art_repairvol(varargin)
 % ----------------------
 
 %keyboard;
-handles = guihandles;
-rng = str2num(get(handles.rangenum, 'String'));
+ handles = guihandles;
+% rng = str2num(get(handles.rangenum, 'String'));
+if isfield(handles,'indexedit') == 1
 out_idx = round(str2num(get(handles.indexedit, 'String')));
-outdw_idx = round(str2num(get(handles.deweightlist, 'String')));
-if nargin == 0
-    % Callbacks don't like argument list, so pass P through getappdata.
-    P = getappdata(gcbo, 'data');
-    GoRepair = 0;
 else
+    out_idx = [];
+end
+if isfield(handles,'deweightlist') == 1
+outdw_idx = round(str2num(get(handles.deweightlist, 'String')));
+else
+    outdw_idx = [];
+end
+% if nargin == 0
+%     % Callbacks don't like argument list, so pass P through getappdata.
+%     P = getappdata(gcbo, 'data');
+%     GoRepair = 0;
+% else
     % In batch mode, Repair button callback is not started so gcbo=[].
     % So pass the data in using the argument list.
     Pa = varargin;
     GoRepair = 1;
     P = char(cell2mat(Pa));
-end
+% end
 
 dummy = 1;
 
