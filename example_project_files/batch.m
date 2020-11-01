@@ -43,7 +43,6 @@ load_vars;
 %global_c : Removes outlier scans (see art_global.m from the Artrepair toolbox)
 %coregister_c: coregisters an anatomical and a functional image (not necessary if normalizing functionals independent of the anatomical)
 %normalise_c : Normalizes the functionals to the functional or anatomical tenmplate
-%create_onsets_c : Creates vectors of onsets for each subject by reading the tsv files. This works with the file create_onsets.m
 %fmri_model_c: Estimates brain activity for different conditions/trial types using the general linear model
 %fmri_contrasts_c : Generates contrasts between linear combinations of betas within each subject.
 %spm_rfx_bch_c : Performs Random-Effects across subjects
@@ -52,9 +51,9 @@ load_vars;
 %ROI_c : Average beta values within Regions of Interest
 
 c_names = {'uncompress_c' 'clean_c' 'expand_c' 'slice_c' 'realign_c' 'resample_c' 'smooth_c' 'motionregress_c' 'global_c' 'coregister_c' 'normalise_c' 'motion_report_c'}; % preprocessing pipeline with Artrepair
-c_names = {'create_onsets_c' 'fmri_model_c' 'fmri_contrasts_c'}; % single-subject analysis pipeline
-c_names = {'spm_rfx_bch_c'}; % RFX analysis
-c_names = {'ROI_c'}; % ROI analysis
+%c_names = {'fmri_model_c' 'fmri_contrasts_c'}; % single-subject analysis pipeline
+%c_names = {'spm_rfx_bch_c'}; % RFX analysis
+%c_names = {'ROI_c'}; % ROI analysis
 
 
 
@@ -101,7 +100,7 @@ c_names = {'ROI_c'}; % ROI analysis
     %%%%%%%%
     
     % root local directory for the experiment.
-    CCN.root_dir = '/crnldata/bbl/NTR/DistSize';
+    CCN.root_dir = '/crnldata/bbl/NTR/XXX';
     
     
     % list of all subjects
@@ -157,8 +156,8 @@ CCN.file_pattern = struct( ...
     
     
     % slice timing, assumes reference slice of 1.
-    CCN.TR = 2.5;
-    CCN.nslices = 26;
+    CCN.TR = 2;
+    CCN.nslices = 32;
   
     %Specify the order in which the slices were acquired
     %1=ascending (1...nslices)
@@ -189,8 +188,8 @@ CCN.file_pattern = struct( ...
         'tol', [0.02 0.02 0.02 0.001 0.001 0.001], ... % tolerences for accuracy of each param
         'fwhm', [7 7] ...              % smoothing to apply to 256x256 joint histogram
         );
-    CCN.first_func = '[root_dir]/[subject]/func/[subject]_task-Num_run-01_bold.nii'; % image to use as reference for coregistration
-
+    CCN.first_func = '[root_dir]/[subject]/func/[subject]_task-XX_run-01_bold.nii'; % image to use as reference for coregistration
+        
     
     % normalization options (if 3 or 4 chosen, only CCN.normalise_wr_flags is read)
     CCN.norm=4;  % Determine normalisation parameters from: 1= first functional; 2= anatomital; 3= unified segmentation (SPM8 style); 4= unified segmentation (SPM12 style)
@@ -212,12 +211,12 @@ CCN.file_pattern = struct( ...
     CCN.normalise_wr_flags = struct( ...
         'preserve', 0, ...          %
         'bb', [-78 -112 -50; 78 76 85], ...     % bounding box
-        'vox', [4 4 4], ... % voxel size
+        'vox', [2 2 3.5], ... % voxel size
         'interp', 7, ...            % 2nd order bspline interpolation
         'wrap', [0 0 0]);           % wrap around edges in x y or z dimensions
     
     % smoothing options
-    CCN.smooth_kernel = [8 8 8]; % FWHM of Gaussian kernel in mm
+    CCN.smooth_kernel = [4 4 7]; % FWHM of Gaussian kernel in mm
     
     
     %% ArtRepair options
