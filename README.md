@@ -14,7 +14,7 @@ Because some of the scripts of the aforementioned toolboxes had to be adapted to
 
 # Get started
 
-The batch system operates on datasets organized in the BIDS format (https://bids.neuroimaging.io). So to get started you need to make sure your data is in that format. You will then need to copy and paste 4 files into your working directory:
+The batch system operates on datasets organized in the BIDS format (https://bids.neuroimaging.io). So to get started you need to make sure your data is in that format. You will then need to copy and paste 3 files into your working directory:
 
 - batch.m: This is the main file in which you specify the different preprocessing and processing steps and well as the paths and the different variables SPM will use for running the analyses.
 - model_spec.m: This script specifies your design matrix at the single-subject level. It also needs to be customized depending on your data.
