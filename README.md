@@ -17,7 +17,6 @@ Because some of the scripts of the aforementioned toolboxes had to be adapted to
 The batch system operates on datasets organized in the BIDS format (https://bids.neuroimaging.io). So to get started you need to make sure your data is in that format. You will then need to copy and paste 4 files into your working directory:
 
 - batch.m: This is the main file in which you specify the different preprocessing and processing steps and well as the paths and the different variables SPM will use for running the analyses.
-- create_onsets.m: This script will create vectors of onsets based on the tsv files for each subjects/task/run. So it needs to be customized depending on your data.
 - model_spec.m: This script specifies your design matrix at the single-subject level. It also needs to be customized depending on your data.
 - create_contrasts.m: This script specifies the contrasts that need to be applied to your design matrix for each subject. It also needs to be customized depending on your data.
 
