@@ -124,9 +124,14 @@ conditions(6) = struct( ...
 %%%%%%%%%%%% DOT NOT EDIT BELOW THIS LINE %%%%%%%%%%%%
 
 for i = 1:length(conditions)
-    for j = 1:length(conditions(1).onsets)
+    for j = 1:length(conditions(i).onsets)
         conditions(i).onsets{j} = conditions(i).onsets{j}{:,1};
-        conditions(i).onsets{j} = conditions(i).onsets{j}.';
+        conditions(i).onsets{j} = conditions(i).onsets{j}.';       
+    end
+    
+    for k = 1:length(conditions(i).parametric_values)
+        conditions(i).parametric_values{k} = conditions(i).parametric_values{k}{:,1};
+        conditions(i).parametric_values{k} = conditions(i).parametric_values{k}.';       
     end
 end
     
