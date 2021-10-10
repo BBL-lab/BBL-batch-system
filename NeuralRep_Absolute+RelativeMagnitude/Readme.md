@@ -1,0 +1,1 @@
+Scripts that were used to preprocess data and perform analysis for the manuscript, "Neural representations of absolute and relative magnitudes in symbolic and non-symbolic formats".
